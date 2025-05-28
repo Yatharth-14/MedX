@@ -1,6 +1,6 @@
 package com.abes.medx.dto;
 
-public class Doctor extends User{
+public class Doctor extends UserDTO{
     private int doctorId;
     private String specialization;
     private int yearsOfExperience;

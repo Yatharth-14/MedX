@@ -1,11 +1,13 @@
 package com.abes.medx.dto;
 
-public class Patient extends User{
+import java.util.Objects;
+
+public class PatientDTO extends UserDTO{
     String patientId;
 
-    public Patient(String firstName, String lastName, String email, String phoneNumber, String age, String patientId) {
+    public PatientDTO(String firstName, String lastName, String email, String phoneNumber, String age, String patientId) {
         super(firstName, lastName, email, phoneNumber, age);
-        this.patientId = patientId;
+        getPatientId();
     }
 
     public String getPatientId() {
@@ -27,16 +29,21 @@ public class Patient extends User{
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Patient)) return false;
-        if (!super.equals(o)) return false;
+    
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof PatientDTO)) return false;
+    if (!super.equals(o)) return false; // Check superclass fields
 
-        Patient patient = (Patient) o;
-
-        return patientId != null ? patientId.equals(patient.patientId) : patient.patientId == null;
-    }
+    PatientDTO that = (PatientDTO) o;
+    return Objects.equals(getPatientId(), that.getPatientId()) &&
+            Objects.equals(getFirstName(), that.getFirstName()) &&
+            Objects.equals(getLastName(), that.getLastName()) &&
+            Objects.equals(getEmail(), that.getEmail()) &&
+            Objects.equals(getPhoneNumber(), that.getPhoneNumber()) &&
+            Objects.equals(getAge(), that.getAge());
+}
 
     @Override
     public int hashCode() {

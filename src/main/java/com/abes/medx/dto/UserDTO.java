@@ -1,13 +1,13 @@
 package com.abes.medx.dto;
 
-public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phoneNumber;
-    private String age;
+public class UserDTO {
+    public String lastName;
+    public String email;
+    public String phoneNumber;
+    public String age;
+    public String firstName;
 
-    public User(String firstName, String lastName, String email, String phoneNumber, String age) {
+    public UserDTO(String firstName, String lastName, String email, String phoneNumber, String age) {
         getFirstName();
         getLastName();
         getEmail();
@@ -60,6 +60,20 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", age='" + age + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserDTO)) return false;
+
+        UserDTO user = (UserDTO) o;
+
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
+        return age != null ? age.equals(user.age) : user.age == null;
     }
     
 }
