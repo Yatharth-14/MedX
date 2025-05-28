@@ -1,5 +1,7 @@
 package com.abes.medx.dto;
 
+import java.util.Objects;
+
 public class DoctorDTO {
 
     private int id;
@@ -44,6 +46,18 @@ public class DoctorDTO {
 
     public void setYearsOfExperience(int yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        DoctorDTO doctorDTO = (DoctorDTO) o;
+        return id == doctorDTO.id && yearsOfExperience == doctorDTO.yearsOfExperience && Objects.equals(name, doctorDTO.name) && Objects.equals(specialization, doctorDTO.specialization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, specialization, yearsOfExperience);
     }
 
     @Override
