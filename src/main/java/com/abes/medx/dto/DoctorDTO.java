@@ -12,6 +12,7 @@ public class DoctorDTO {
         getName();
         getSpecialization();
         getYearsOfExperience();
+        
     }
 
     public int getId() {
